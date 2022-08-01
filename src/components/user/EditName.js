@@ -3,8 +3,8 @@ function EditName()
     return(
         <form className='form-editName close'>
             <div className='inputs'>
-                <input type="text" name="firstName" placeHolder='Tony' className='input-name'/>
-                <input type="text" name="lastName" placeHolder='Jarvis' className='input-name'/>
+                <input type="text" name="firstName" placeholder='Tony' className='input-name'/>
+                <input type="text" name="lastName" placeholder='Jarvis' className='input-name'/>
             </div>
             <div className='buttons'>
                 <input type="submit" value="Save" />

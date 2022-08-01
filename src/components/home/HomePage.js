@@ -3,7 +3,11 @@ import Header from '../Header'
 import Features from './Features'
 import Hero from './Hero'
 
+import { useState, useEffect } from 'react';
+
 function HomePage() {
+
+
     return(
         <div className="Home">
             <Header/>

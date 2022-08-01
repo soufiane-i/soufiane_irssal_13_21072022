@@ -5,7 +5,7 @@ function UserName()
         <>
         <div className='userName'>
           <h1>Tony Jarvis!</h1>
-          <button class="edit-button" onClick={EditNameButton}>Edit Name</button>
+          <button className="edit-button" onClick={EditNameButton}>Edit Name</button>
         </div>
         </>
     )
@@ -21,3 +21,4 @@ function EditNameButton()
   editForm.classList.remove('close')
   userName.classList.add('close')
 }
+
