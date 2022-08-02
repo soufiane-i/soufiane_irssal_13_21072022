@@ -1,17 +1,15 @@
-import Header from '../Header'
-import Footer from '../Footer'
-import SignIn from './SignIn'
+import Header from "../Header";
+import Footer from "../Footer";
+import SignIn from "./SignIn";
 
-function SignInPage()
-{
-    return(
-        <>
-        <Header/>
-        <SignIn/>
-        <Footer/>
-        </>
-        
-    )
+function SignInPage() {
+  return (
+    <>
+      <Header />
+      <SignIn />
+      <Footer />
+    </>
+  );
 }
 
-export default SignInPage
+export default SignInPage;
