@@ -179,7 +179,7 @@ body {
   width: 320px;
   margin: 3rem auto;
   padding: 2rem;
-  height: 380px;
+  height: 400px;
 }
 
 .sign-in-icon {
@@ -367,4 +367,10 @@ body {
 .close
 {
   display: none;
+}
+
+.error {
+  font-size: 15px;
+  color: red;
+  text-align: left;
 }

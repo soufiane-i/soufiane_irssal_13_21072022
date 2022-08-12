@@ -9,7 +9,6 @@ import axios from "axios";
 function HomePage() {
   const fetchDatas = async () => {
     const data = await axios.get("/");
-    console.log(data);
   };
 
   useEffect(() => {

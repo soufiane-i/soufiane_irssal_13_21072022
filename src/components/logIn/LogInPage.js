@@ -1,6 +1,6 @@
 import Header from "../Header";
 import Footer from "../Footer";
-import SignIn from "./SignIn";
+import SignIn from "./LogIn";
 
 function SignInPage() {
   return (
