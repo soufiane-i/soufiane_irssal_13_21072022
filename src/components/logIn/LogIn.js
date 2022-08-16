@@ -1,31 +1,29 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useRef } from "react";
 import axios from "axios";
-import { setLogInData, setToken } from "../../redux/feature/logInSlice";
+import { setToken } from "../../redux/feature/logInSlice";
 import { useNavigate } from "react-router-dom";
+import { loadUserInfos } from "../function/loadUserInfos";
+
 function SignIn() {
   const navigate = useNavigate();
   const loginEmail = useRef("");
   const loginPassword = useRef("");
   const dispatch = useDispatch();
-
   let token;
+
   const instance = axios.create({
     baseURL: "http://localhost:3001/api/v1/user",
   });
 
-     useEffect(() => {
-    const userInfo = localStorage.getItem("userInfo");
-
-    if (userInfo) {
-      navigate("/user");
-    }
-  }, [navigate]);
+  token = localStorage.getItem("token");
+  if (token == "") {
+  } else loadUserInfos(token, dispatch, navigate);
 
   const handlerLogin = async (e) => {
     e.preventDefault();
-    const error = document.querySelector('.error')
-     instance
+    const error = document.querySelector(".error");
+    instance
       .post("/login", {
         email: loginEmail.current.value,
         password: loginPassword.current.value,
@@ -38,43 +36,14 @@ function SignIn() {
         //refreshToken = response.data.refreshToken;
         dispatch(setToken(token));
         //loadUserInfos(response.data.body.token);
-        error.classList.add('close')
+        error.classList.add("close");
         navigate("/user");
       })
       .catch((err) => {
         console.log(err.response.status);
-        error.classList.remove('close')
-      })
+        error.classList.remove("close");
+      });
   };
-
-   function loadUserInfos(tokenData) {
-    fetch("http://localhost:3001/api/v1/user/profile", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${tokenData}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        dispatch(setLogInData(res.body));
-        navigate("/user");
-      }); 
-
-/*            instance
-        .post("/profile", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${tokenData}`,
-          },
-        })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((err) => {
-          console.log(err);
-        }); */
-  } 
 
   return (
     <main className="main bg-dark">

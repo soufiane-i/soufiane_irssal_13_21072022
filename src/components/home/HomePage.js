@@ -2,18 +2,22 @@ import Footer from "../Footer";
 import Header from "../Header";
 import Features from "./Features";
 import Hero from "./Hero";
-
-import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { setLogInData, setToken } from "../../redux/feature/logInSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { loadUserInfos } from "../function/loadUserInfos";
 
 function HomePage() {
-  const fetchDatas = async () => {
-    const data = await axios.get("/");
-  };
-
-  useEffect(() => {
-    fetchDatas();
-  });
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  let token;
+  token = localStorage.getItem("token");
+  if (token == "") {
+  } else {
+    loadUserInfos(token, dispatch, navigate);
+  }
   return (
     <div className="Home">
       <Header />

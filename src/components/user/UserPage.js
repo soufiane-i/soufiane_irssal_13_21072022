@@ -5,28 +5,15 @@ import EditName from "./EditName";
 import HeaderLogIn from "./HeaderLogIn";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogInData, setToken } from "../../redux/feature/logInSlice";
-
+import { useNavigate } from "react-router-dom";
+import { loadUserInfos } from "../function/loadUserInfos";
 import axios from "axios";
 import { useEffect } from "react";
 
 function UserPage() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   let token = useSelector((state) => state.logIn.tokenAuth);
-
-     function loadUserInfos(tokenData) {
-    fetch("http://localhost:3001/api/v1/user/profile", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: tokenData,
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        dispatch(setLogInData(res.body));
-        
-      }); 
-  } 
 
   if(token === null)
   {
@@ -36,14 +23,14 @@ function UserPage() {
     localStorage.setItem('token', token)
   }
     useEffect(() => {
-      loadUserInfos(token)
+        loadUserInfos(token, dispatch)    
     }, [])
 
     let datas = useSelector((state) => state.logIn.logIn)
     let firstName
     let lastName
 
-if(datas === null)
+if(datas === null || datas === undefined)
 {
 
 } else {
@@ -51,12 +38,11 @@ if(datas === null)
   lastName = datas.lastName 
 }
 
-
-
-      
+    if (token == "") {
+      navigate("/sign-in")
     
-
-
+    } else
+    {
   return (
     <>
       <HeaderLogIn   firstName={firstName}  />
@@ -76,6 +62,9 @@ if(datas === null)
       <Footer />
     </>
   );
+    }
+
+
 }
 
 export default UserPage;

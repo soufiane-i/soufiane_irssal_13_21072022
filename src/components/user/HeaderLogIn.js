@@ -1,4 +1,15 @@
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setLogInData, setToken } from "../../redux/feature/logInSlice";
 function HeaderLogIn(props) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  function logOut() {
+    localStorage.setItem('token', "")
+    dispatch(setToken(null))
+    dispatch(setLogInData(null))
+    navigate("/");
+  }
   return (
     <nav className="main-nav">
       <a className="main-nav-logo" href="./index.html">
@@ -9,15 +20,15 @@ function HeaderLogIn(props) {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </a>
-      <div>
-        <a className="main-nav-item" href="./user.html">
+      <div className="main-nav-items">
+        <div className="main-nav-item">
           <i className="fa fa-user-circle"></i>
-          {props.firstName}
-        </a>
-        <a className="main-nav-item" href="./index.html">
+          <p>{props.firstName}</p>
+        </div>
+        <div className="main-nav-item" onClick={logOut}>
           <i className="fa fa-sign-out"></i>
-          Sign Out
-        </a>
+          <p>Sign Out</p>
+        </div>
       </div>
     </nav>
   );
