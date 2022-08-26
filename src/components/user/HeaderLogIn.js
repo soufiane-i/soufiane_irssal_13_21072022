@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setLogInData, setToken } from "../../redux/feature/logInSlice";
 function HeaderLogIn(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   function logOut() {
-    localStorage.setItem('token', "")
-    dispatch(setToken(null))
-    dispatch(setLogInData(null))
+    localStorage.removeItem("token");
+    dispatch(setToken(null));
+    dispatch(setLogInData(null));
     navigate("/");
   }
   return (

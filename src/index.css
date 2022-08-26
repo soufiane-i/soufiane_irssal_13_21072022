@@ -55,8 +55,7 @@ body {
   color: #42b983;
 }
 
-.main-nav-items
-{
+.main-nav-items {
   display: flex;
   flex-direction: row;
 }
@@ -70,7 +69,7 @@ body {
   background-color: white;
 }
 
-.main-nav-item:hover p{
+.main-nav-item:hover p {
   text-decoration: none;
 }
 
@@ -93,7 +92,7 @@ body {
 }
 
 .hero {
-  background-image: url('../public/img/bank-tree.jpeg');
+  background-image: url("../public/img/bank-tree.jpeg");
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -322,14 +321,12 @@ body {
 }
 
 @media (max-width: 720px) {
-  .main
-  {
+  .main {
     height: auto;
   }
 }
 
-.inputs input
-{
+.inputs input {
   height: 35px;
   padding: 0 10px;
   color: gray;
@@ -340,13 +337,11 @@ body {
   background-color: white;
 }
 
-.inputs input:focus
-{
+.inputs input:focus {
   outline: none;
 }
 
-.buttons input
-{
+.buttons input {
   margin: 0px 10px;
   height: 30px;
   width: 100px;
@@ -357,29 +352,24 @@ body {
   background-color: white;
 }
 
-.buttons input:hover
-{
+.buttons input:hover {
   background-color: white;
 }
 
-.formEditName
-{
+.formEditName {
   display: flex;
   flex-direction: column;
 }
 
-.formEdit-open
-{
+.formEdit-open {
   display: flex;
 }
 
-.userName
-{
+.userName {
   display: block;
 }
 
-.close
-{
+.close {
   display: none;
 }
 
@@ -387,4 +377,8 @@ body {
   font-size: 15px;
   color: red;
   text-align: left;
+}
+
+.cancel {
+  text-align: center;
 }

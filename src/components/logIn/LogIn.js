@@ -17,8 +17,9 @@ function SignIn() {
   });
 
   token = localStorage.getItem("token");
-  if (token == "") {
-  } else loadUserInfos(token, dispatch, navigate);
+  if (token) {
+    loadUserInfos(token, dispatch, navigate);
+  }
 
   const handlerLogin = async (e) => {
     e.preventDefault();
