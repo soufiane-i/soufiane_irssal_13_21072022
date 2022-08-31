@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { setLogInData } from "../../redux/feature/logInSlice";
 
 export function loadUserInfos(tokenData, dispatch, navigate) {
@@ -12,7 +11,7 @@ export function loadUserInfos(tokenData, dispatch, navigate) {
     .then((res) => res.json())
     .then((res) => {
       dispatch(setLogInData(res.body));
-      if (navigate != undefined) {
+      if (navigate !== undefined) {
         navigate("/user");
       }
     });

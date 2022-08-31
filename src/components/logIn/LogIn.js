@@ -34,9 +34,7 @@ function SignIn() {
           "token"
         ] = `Bearer ${response.data.body.token}`;
         token = `Bearer ${response.data.body.token}`;
-        //refreshToken = response.data.refreshToken;
         dispatch(setToken(token));
-        //loadUserInfos(response.data.body.token);
         error.classList.add("close");
         navigate("/user");
       })
