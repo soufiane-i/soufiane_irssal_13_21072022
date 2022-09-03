@@ -4,12 +4,12 @@ info:
   description: Contains all available API endpoints in this codebase
   version: "1.0.0"
   termsOfService: "http://swagger.io/terms/"
-host: localhost:3000
+host: localhost:3001
 basePath: /api/v1
 schemes:
   - http
 paths:
-  /user/transactions:
+  /user/transactions/{month}:
     get:
       security:
         - Bearer: []
@@ -34,7 +34,7 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
-  /user/transactions/{transactionId}:
+  /user/transactions/{month}/{transactionId}:
     get:
       security:
         - Bearer: []
@@ -64,7 +64,57 @@ paths:
         - Bearer: []
       tags:
         - User Module
-      summary: Update transaction
+      summary: Add informations in transaction
+      description: API for update transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: apiKey
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/definitions/Transaction"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: User transaction retrieved successully
+          schema:
+            $ref: "#/definitions/Transaction"
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Update informations in transaction
+      description: API for update transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: apiKey
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/definitions/Transaction"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: User transaction retrieved successully
+          schema:
+            $ref: "#/definitions/Transaction"
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Delete informations in transaction
       description: API for update transaction
       parameters:
         - in: header
