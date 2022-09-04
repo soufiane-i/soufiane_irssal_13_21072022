@@ -34,7 +34,7 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
-  /user/transactions/{month}/{transactionId}:
+  /user/transactions/{transactionId}:
     get:
       security:
         - Bearer: []
@@ -84,7 +84,6 @@ paths:
           description: User transaction retrieved successully
           schema:
             $ref: "#/definitions/Transaction"
-  /user/transactions/{transactionId}:
     post:
       security:
         - Bearer: []
