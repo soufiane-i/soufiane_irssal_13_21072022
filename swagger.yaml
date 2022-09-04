@@ -84,6 +84,7 @@ paths:
           description: User transaction retrieved successully
           schema:
             $ref: "#/definitions/Transaction"
+  /user/transactions/{transactionId}:
     post:
       security:
         - Bearer: []
